@@ -124,6 +124,9 @@
             <h2><b>Shop:</b> {{ offer_detail.shop_id }}</h2>
             <h2><b>Location:</b> {{ offer_detail.shop_id.location }}</h2>
             <h2><b>Contact:</b> {{ offer_detail.shop_id.contact }}</h2>
+            <button><a href="{% url 'edit_offer' offer_detail.id %}">Edit</a></button>
+            <button><a href="{% url 'delete_offer' offer_detail.id %}">Delete</a></button>
+{#            {{ offer_detail.id }}#}
 
 
         </div>

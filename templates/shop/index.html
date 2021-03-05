@@ -16,6 +16,13 @@
       <td>{{ shop.location }}</td>
       <td>{{ shop.contact }}</td>
       <td>{{ offer.shop_id.location }}</td>
+      <td>
+            <div>
+                <button><a href="{% url 'edit_shop' shop.id %}">Edit</a></button>
+                <button><a href="{% url 'delete_shop' shop.id %}">Delete</a></button>
+            </div>
+        </td>
+
     </tr>
   {% endfor %}
   </tbody>

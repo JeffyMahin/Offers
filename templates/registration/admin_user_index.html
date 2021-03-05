@@ -18,6 +18,7 @@
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.groups.all.0.name }}</td>
+{#                <td><button><a href="{% url 'delete_admin' user.id %}">Delete</a></button></td>#}
             </tr>
 
         {% endfor %}

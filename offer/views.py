@@ -1,9 +1,11 @@
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
 from feedback.models import Feedback
 from .forms import OfferDetailForm
 from .models import OfferDetail
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required(login_url='login')
@@ -70,6 +72,23 @@ def offer_detail_view(request, id):
     return render(request, 'offer/offer_detail.html', context)
 
 
+def edit_offer(request, id):
+    current_user = request.user
+    edit_offer = OfferDetailForm(request.POST)
+
+    if edit_offer.is_valid():
+        edit_offer.save()
+        return redirect('offer_index')
+
+    context = {
+        'edit_offer': edit_offer,
+        'current_user': current_user
+    }
+
+    return render(request, 'offer/edit.html', context)
+
+
+
 @login_required(login_url='login')
 def accept_offer(request, offer_id):
     offer_detail = OfferDetail.objects.get(id=offer_id)
@@ -82,3 +101,16 @@ def delete_offer(request, offer_id):
     offer_detail = OfferDetail.objects.get(id=offer_id)
     offer_detail.delete()
     return redirect('offer_pending')
+
+
+def delete_detail_offer(request, id):
+
+    # current_user = request.user
+    # print(current_user)
+    # print(current_user.cleaned_data['groups'].first().name)
+    # delete_offer = OfferDetail.objects.get(id = id)
+    # # delete_offer.delete()
+
+    # return HttpResponseNotFound("Deleting offer provision is not allowed")
+    # messages.info(request, "You can't delete here")
+    return redirect('offer_index')
