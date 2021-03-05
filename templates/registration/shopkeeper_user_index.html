@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+{% block title %} Shopkeeper List {% endblock %}
+
+{% block content %}
+    {% if current_user.groups.all.0.name == 'Admin' %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">User Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">User Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for shopkeeper in shopkeeper_user_index %}
+
+            <tr>
+                <td>{{ shopkeeper.username }}</td>
+                <td>{{ shopkeeper.email }}</td>
+                <td>{{ shopkeeper.groups.all.0.name }}</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

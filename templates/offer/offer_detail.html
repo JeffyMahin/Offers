@@ -1,0 +1,149 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">#}
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">#}
+{##}
+{#</head>#}
+{#<body>#}
+{#{{ offer_detail.name }} <br>#}
+{#{{ offer_detail.shop_id }}#}
+{#<h3>Liked It?</h3>#}
+{##}
+{#    <form method="POST" id="feedback_form">#}
+{#        {% csrf_token %}#}
+{#        <div>#}
+{#            <input type="hidden" id="feedback_val" name="feedback_val">#}
+{#            <button type="submit" id="yes"><i class="fa fa-thumbs-up" style="font-size:25px;color:black"></i></button>#}
+{#            <button type="submit" id="no"><i class="fa fa-thumbs-down" style="font-size:25px;color:black"></i></button>#}
+{#        </div>#}
+{##}
+{#    </form>#}
+{##}
+{#    <script>#}
+{#        $( document ).ready(function() {#}
+{#            $('#yes').click(function(e){#}
+{#                e.preventDefault();#}
+{#                $('#feedback_val').val(1).change();#}
+{#                $('#feedback_form').submit();#}
+{#            });#}
+{#            $('#no').click(function(e){#}
+{#                e.preventDefault();#}
+{#                $('#feedback_val').val(0).change();#}
+{#                $('#feedback_form').submit();#}
+{#            })#}
+{#        });#}
+{#    </script>#}
+{#</body>#}
+{#</html>#}
+
+{#{% extends 'home/base.html' %}#}
+{#{% block heading %}#}
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#    {{ offer_detail.name }} <br>#}
+{#{{ offer_detail.shop_id }}#}
+{#<h3>Liked It?</h3>#}
+{##}
+{#    <form method="POST" id="feedback_form">#}
+{#        {% csrf_token %}#}
+{#        <div>#}
+{#            <input type="hidden" id="feedback_val" name="feedback_val">#}
+{#            <button type="submit" id="yes"><i class="fa fa-thumbs-up" style="font-size:25px;color:black"></i></button>#}
+{#            <button type="submit" id="no"><i class="fa fa-thumbs-down" style="font-size:25px;color:black"></i></button>#}
+{#        </div>#}
+{##}
+{#    </form>#}
+{##}
+{#    <script>#}
+{#        $( document ).ready(function() {#}
+{#            $('#yes').click(function(e){#}
+{#                e.preventDefault();#}
+{#                $('#feedback_val').val(1).change();#}
+{#                $('#feedback_form').submit();#}
+{#            });#}
+{#            $('#no').click(function(e){#}
+{#                e.preventDefault();#}
+{#                $('#feedback_val').val(0).change();#}
+{#                $('#feedback_form').submit();#}
+{#            })#}
+{#        });#}
+{#    </script>#}
+{##}
+{##}
+{##}
+{#{% endblock %}#}
+
+
+{% extends "home/base.html" %}
+{#{% load static %}#}
+{% block heading %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+
+    <h1 style="text-align: right">{{ offer_detail.name }}</h1>
+    <h6 style="text-align: right">From {{ offer_detail.start_date }} to {{ offer_detail.end_date }}</h6>
+    <div class="dropdown-divider"></div> <br><br>
+
+    <div class="row">
+        <div class="col-md-8">
+            <img src="{{ offer_detail.image.url }}" alt="" width="100%">
+        </div>
+
+        <div class="col-md-4">
+{#        {{ current_user }}#}
+            <br>
+            <form method="POST" id="feedback_form">
+                {% csrf_token %}
+                <div>
+                    <input type="hidden" id="feedback_val" name="feedback_val">
+                    <button type="submit" id="yes"><i class="fa fa-thumbs-up" style="font-size:25px;color:black"></i>
+                    </button>
+                    <button type="submit" id="no"><i class="fa fa-thumbs-down" style="font-size:25px;color:black"></i>
+                    </button>
+                </div>
+            </form>
+            <br><br>
+
+            <h3><b>About the offer:</b></h3>
+
+            <p>{{ offer_detail.detail }}</p>
+
+            <br>
+
+            <h3><b>Offer:</b> {{ offer_detail.offer_percentage }} % flat discount on {{ offer_detail.product }} product</h3> <br>
+            <h2><b>Shop:</b> {{ offer_detail.shop_id }}</h2>
+            <h2><b>Location:</b> {{ offer_detail.shop_id.location }}</h2>
+            <h2><b>Contact:</b> {{ offer_detail.shop_id.contact }}</h2>
+
+
+        </div>
+
+
+        <script>
+            $(document).ready(function () {
+                $('#yes').click(function (e) {
+                    e.preventDefault();
+                    $('#feedback_val').val(1).change();
+                    $('#feedback_form').submit();
+                });
+                $('#no').click(function (e) {
+                    e.preventDefault();
+                    $('#feedback_val').val(0).change();
+                    $('#feedback_form').submit();
+                })
+            });
+        </script>
+
+
+    </div>
+{% endblock %}

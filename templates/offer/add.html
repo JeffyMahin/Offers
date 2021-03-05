@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+    <div class="dropdown-divider"></div> <br><br>
+
+    <div class="container">
+        <h2 class="bg-dark text-white">Add Offer</h2>
+        <div class="form-group">
+            <form enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                {{ offer_data.as_p }}
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

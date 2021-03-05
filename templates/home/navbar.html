@@ -1,0 +1,70 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'offer_index' %}">Offer Koi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'offer_index' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Offers
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'offer_add' %}">Add Offer</a>
+                        <a class="dropdown-item" href="{% url 'offer_pending' %}">Pending Offer List</a>
+                        <a class="dropdown-item" href="{% url 'offer_index' %}">Live Offer List</a>
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Shops
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'shop_add' %}">Add Shop</a>
+                        <a class="dropdown-item" href="{% url 'shop_index' %}">Shop List</a>
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Users
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'user_registration' %}">Add User</a>
+                        <a class="dropdown-item" href="{% url 'admin_user_index' %}">Admin User List</a>
+                        <a class="dropdown-item" href="{% url 'shopkeeper_user_index' %}">Shopkeeper List</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}?next=/">Logout</a>
+                </li>
+
+{#                <a href="{% url "logout" %}?next=/">logout</a>#}
+
+
+            </ul>
+
+        </div>
+    </nav>
+
+</div>

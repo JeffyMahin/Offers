@@ -1,0 +1,37 @@
+{% extends 'home/base.html' %}
+
+{% block heading %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% for pending_offer in pending_offer_index %}
+            {% if current_user.groups.all.0.name == 'Admin' %}
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <img class="card-img-top" src="{{ pending_offer.image.url }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pending_offer.name }}</h5>
+                        <h5 class="card-title">Product: {{ pending_offer.product }}</h5>
+                        <p class="card-text">{{ pending_offer.detail }}</p>
+
+                        <div>
+
+                            <a href="{% url 'accept_offer' offer_id=pending_offer.id %}"><i class="fa fa-check"
+                                                                                            style="font-size:25px;color:black"></i></a>
+                            <a href="{% url 'delete_offer' offer_id=pending_offer.id %}"><i class="fa fa-trash"
+                                                                                            style="font-size:25px;color:black"></i></a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

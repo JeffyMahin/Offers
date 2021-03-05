@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+{% block title %} Admin List {% endblock %}
+
+{% block content %}
+    {% if current_user.groups.all.0.name == 'Admin' %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">User Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">User Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in admin_user_index %}
+
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.groups.all.0.name }}</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

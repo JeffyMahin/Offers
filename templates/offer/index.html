@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        {% for offer in offer_index %}
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <img class="card-img-top" src="{{ offer.image.url }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ offer.name }}</h5>
+                        <h5 class="card-title">Product: {{ offer.product }}</h5>
+                        <p class="card-text">{{ offer.detail }}</p>
+                        <a href="{% url 'offer_detail' offer.id %}"
+                           class="btn btn-primary">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
