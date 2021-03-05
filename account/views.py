@@ -53,6 +53,7 @@ def admin_user_index(request):
 
     return render(request, 'registration/admin_user_index.html', context)
 
+
 #
 # def delete_admin(request, id):
 #     delete_admin = User.objects.get(id = id)
@@ -76,8 +77,9 @@ def shopkeeper_user_index(request):
 
     return render(request, 'registration/shopkeeper_user_index.html', context)
 
+
 def delete_admin(request, id):
-    delete_admin = User.objects.get(id = id)
+    delete_admin = User.objects.get(id=id)
 
     # print(delete_admin)
     delete_admin.delete()

@@ -28,7 +28,6 @@ def index(request):
     return render(request, 'shop/index.html', context)
 
 
-
 def edit(request, id):
     current_user = request.user
 
@@ -49,10 +48,8 @@ def edit(request, id):
 def delete(request, id):
     print(id)
 
-    delete_shop = ShopDetail.objects.get(id = id)
+    delete_shop = ShopDetail.objects.get(id=id)
     print(delete_shop)
 
     delete_shop.delete()
     return redirect('shop_index')
-
-

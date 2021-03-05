@@ -1,6 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
-
 from feedback.models import Feedback
 from .forms import OfferDetailForm
 from .models import OfferDetail
@@ -54,7 +53,6 @@ def index(request):
 
 def offer_detail_view(request, id):
     current_user = request.user
-
     offer_detail = OfferDetail.objects.get(id=id)
 
     if request.method == 'POST':
@@ -88,13 +86,13 @@ def edit_offer(request, id):
     return render(request, 'offer/edit.html', context)
 
 
-
 @login_required(login_url='login')
 def accept_offer(request, offer_id):
     offer_detail = OfferDetail.objects.get(id=offer_id)
     offer_detail.status = 1
     offer_detail.save()
     return redirect('offer_index')
+
 
 @login_required(login_url='login')
 def delete_offer(request, offer_id):
@@ -104,7 +102,6 @@ def delete_offer(request, offer_id):
 
 
 def delete_detail_offer(request, id):
-
     # current_user = request.user
     # print(current_user)
     # print(current_user.cleaned_data['groups'].first().name)
